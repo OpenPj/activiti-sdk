@@ -24,6 +24,12 @@ Full Maven lifecycle command:
 
  * `mvn clean install docker:build docker:start`
  
+Endpoints available:
+
+ * `http://localhost:8080/activiti-app` (default user: `admin/test`)
+ * `http://localhost:8081/activiti-rest` (default user: `admin/test`)
+ * `http://localhost:9090/activiti-admin` (default user: `admin/admin`)
+ 
 Stop all the Docker containers with:
  
  * `mvn docker:stop`
