@@ -1,0 +1,28 @@
+FROM tomcat:8-jdk11-openjdk
+
+ARG TOMCAT_DIR=/usr/local/tomcat
+ARG USERNAME=activiti
+ARG USERID=33007
+ARG CONTENT_STORAGE_DIR=/data
+
+USER root
+
+RUN useradd -c "Activiti" -M -s "/bin/bash" -u "${USERID}" -o "${USERNAME}"
+
+RUN rm -rf $TOMCAT_DIR/webapps/activiti-app
+
+COPY --chown=${USERNAME} config/activiti-app.properties $TOMCAT_DIR/lib
+COPY --chown=${USERNAME} wars/activiti-app.war $TOMCAT_DIR/webapps
+
+RUN unzip $TOMCAT_DIR/webapps/activiti-app.war -d $TOMCAT_DIR/webapps/activiti-app
+RUN rm $TOMCAT_DIR/webapps/activiti-app.war
+
+COPY --chown=${USERNAME} logging/activiti-app-log4j.properties $TOMCAT_DIR/webapps/activiti-app/WEB-INF/classes/log4j.properties
+COPY --chown=${USERNAME} config/setenv.sh ${TOMCAT_DIR}/bin
+
+RUN chown ${USERNAME}:${USERNAME} -R /usr/local/tomcat
+
+RUN mkdir -p ${CONTENT_STORAGE_DIR}
+RUN chown ${USERNAME}:${USERNAME} ${CONTENT_STORAGE_DIR}
+
+USER ${USERNAME}

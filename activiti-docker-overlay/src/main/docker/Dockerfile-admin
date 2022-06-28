@@ -1,0 +1,20 @@
+FROM tomcat:8-jdk11-openjdk
+
+ARG TOMCAT_DIR=/usr/local/tomcat
+ARG USERNAME=activiti
+ARG USERID=33007
+
+USER root
+
+RUN useradd -c "Activiti" -M -s "/bin/bash" -u "${USERID}" -o "${USERNAME}"
+
+RUN rm -rf $TOMCAT_DIR/webapps/activiti-admin
+
+COPY --chown=${USERNAME} config/activiti-admin.properties $TOMCAT_DIR/lib
+
+COPY --chown=${USERNAME} wars/activiti-admin.war $TOMCAT_DIR/webapps
+COPY --chown=${USERNAME} config/setenv.sh ${TOMCAT_DIR}/bin
+
+RUN chown ${USERNAME}:${USERNAME} -R /usr/local/tomcat
+
+USER ${USERNAME}
