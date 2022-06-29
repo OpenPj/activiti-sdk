@@ -1,4 +1,4 @@
-# Activiti SDK v1.0.0
+# Activiti SDK v1.0.1
 
 The project consists of the following Maven submodules:
 
@@ -7,6 +7,7 @@ The project consists of the following Maven submodules:
  * Activiti Rest Overlay WAR (`activiti-app-rest-overlay-war`): generate activiti-rest WAR overlay with Activiti Extensions JAR embedded
  * Activiti Admin Overlay WAR (`activiti-admin-overlay-war`): generate activiti-admin WAR overlay
  * Activiti Overlay Docker (`activiti-app-overlay-docker`): put your overlayed WAR into the APS Docker container
+ * Activiti Rest Swagger Client (`activiti-swagger-client`): generate the Activiti Rest Java Swagger client
  * Activiti Integration Tests (`activiti-integration-tests`): integration tests
 
 ## Capabilities
@@ -94,7 +95,7 @@ Start your Activiti Docker containers with the following architecture:
 
   * Purge all the Docker volumes:
   
-`mvn clean -Ppurge-volumes`
+`mvn clean -Ppurge`
 
 # Activiti Integration Tests Module
 This module includes tests for interacting with the Activiti Platform on Docker using Http Client 5.

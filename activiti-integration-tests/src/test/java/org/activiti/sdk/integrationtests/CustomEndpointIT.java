@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 public class CustomEndpointIT {
-
+	
 	protected static final String ACTIVITI_APP_USERNAME = "admin";
 	protected static final String ACTIVITI_APP_PASSWORD = "test";
 	protected static final String BASE_PATH_PROTOCOL = "http";
@@ -20,7 +20,8 @@ public class CustomEndpointIT {
 	@Test
 	@Order(1)
 	public void testCustomPrivateRestEndpoint() {
-		IntegrationTestUtils.executePrivateGETRequest(ACTIVITI_APP_USERNAME, ACTIVITI_APP_PASSWORD, BASE_PATH_PROTOCOL,
+		IntegrationTestUtils
+				.executePrivateGETRequest(ACTIVITI_APP_USERNAME, ACTIVITI_APP_PASSWORD, BASE_PATH_PROTOCOL,
 				BASE_PATH_HOSTNAME, BASE_PATH_PORT, PRIVATE_ENDPOINT);
 	}
 
