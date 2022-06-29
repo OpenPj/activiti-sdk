@@ -1,5 +1,9 @@
 # Activiti SDK v1.0.1
 
+The Activiti SDK based on Apache Maven, includes support for rapid and standard development, testing, packaging, versioning and release of your Activiti integration and extension projects.
+
+DevOps Engineers and System Administrators can consider to use our [Activiti Deployment template](https://github.com/OpenPj/activiti-deployment) in order to deploy the entire Activiti platform.
+
 The project consists of the following Maven submodules:
 
  * Activiti extensions JAR (`activiti-extensions-jar`): put here your Java extensions
