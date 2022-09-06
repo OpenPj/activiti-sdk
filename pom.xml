@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.activiti.community</groupId>
 	<artifactId>activiti-sdk</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>pom</packaging>
 	<name>Activiti SDK</name>
 	<description>SDK template for creating Activiti extensions</description>
@@ -10,8 +10,8 @@
 	<developers>
 		<developer>
 			<id>ConfcommercioCAF</id>
-			<name>Mattia Bressan</name>
-			<email>mattia.bressan@confcom.it</email>
+			<name>Davide Pasqual</name>
+			<email>davide.pasqual@confcom.it</email>
 			<organization>Confcommercio Venezia CAF S.r.l.</organization>
 			<organizationUrl>https://www.confcommercioveneziacaf.it</organizationUrl>
 		</developer>

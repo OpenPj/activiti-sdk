@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>activiti-app-rest-overlay-war</artifactId>
 	<packaging>war</packaging>
@@ -7,7 +9,7 @@
 	<parent>
 		<groupId>org.activiti.community</groupId>
 		<artifactId>activiti-sdk</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 	</parent>
 
 	<dependencies>
@@ -23,7 +25,7 @@
 		</dependency>
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
-    		<artifactId>jaxb-api</artifactId>
+			<artifactId>jaxb-api</artifactId>
 			<version>${jaxb.api.version}</version>
 		</dependency>
 		<dependency>
@@ -36,6 +38,21 @@
 			<groupId>org.activiti</groupId>
 			<artifactId>activiti-rest</artifactId>
 			<version>${activiti.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.0</version>
 		</dependency>
 	</dependencies>
 
@@ -55,6 +72,13 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<packagingExcludes>WEB-INF/lib/jackson-annotations-2.7.5.jar,
+						WEB-INF/lib/jackson-core-2.7.5.jar,
+						WEB-INF/lib/jackson-databind-2.7.5.jar,
+						WEB-INF/lib/h2-1.3.176.jar
+					</packagingExcludes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

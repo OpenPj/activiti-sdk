@@ -22,6 +22,17 @@ The project consists of the following Maven submodules:
  * OpenJDK 11
  * Apache Maven 3.8.6
  * Docker (optional using `mvn clean install -DskipITs`)
+ * Add the following snippet in your /<USER_HOME>/.m2/settings.xml for enabling the Docker Maven Plugin provided by fabric8:
+
+```xml
+<settings>
+... 
+	<pluginGroups>
+		<pluginGroup>io.fabric8</pluginGroup>
+	</pluginGroups>
+...
+</settings>
+```
 
 # Quickstart
 
