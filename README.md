@@ -1,4 +1,4 @@
-# Activiti SDK v1.0.2
+# Activiti SDK v1.0.3
 
 The Activiti SDK based on Apache Maven, includes support for rapid and standard development, testing, packaging, versioning and release of your Activiti integration and extension projects.
 

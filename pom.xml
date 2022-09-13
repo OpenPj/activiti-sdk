@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.activiti.community</groupId>
 	<artifactId>activiti-sdk</artifactId>
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>pom</packaging>
 	<name>Activiti SDK</name>
 	<description>SDK template for creating Activiti extensions</description>
@@ -53,15 +53,21 @@
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 
 		<!-- Docker settings -->
-		<docker-maven-plugin.version>0.40.1</docker-maven-plugin.version>
+		<docker-maven-plugin.version>0.40.2</docker-maven-plugin.version>
 		<docker-maven-plugin.skip.save>false</docker-maven-plugin.skip.save>
 		<docker-maven-plugin.build.save>false</docker-maven-plugin.build.save>
 
 		<docker.activiti-app.tomcat.port.external>8080</docker.activiti-app.tomcat.port.external>
 		<docker.activiti-app.tomcat.port.internal>8080</docker.activiti-app.tomcat.port.internal>
+		
+		<docker.activiti-app.debug.port.external>8888</docker.activiti-app.debug.port.external>
+		<docker.activiti-app.debug.port.internal>8888</docker.activiti-app.debug.port.internal>
 
 		<docker.activiti-rest.tomcat.port.external>8081</docker.activiti-rest.tomcat.port.external>
 		<docker.activiti-rest.tomcat.port.internal>8080</docker.activiti-rest.tomcat.port.internal>
+		
+		<docker.activiti-rest.debug.port.external>9999</docker.activiti-rest.debug.port.external>
+		<docker.activiti-rest.debug.port.internal>8888</docker.activiti-rest.debug.port.internal>
 
 		<docker.activiti-admin.tomcat.port.external>9090</docker.activiti-admin.tomcat.port.external>
 		<docker.activiti-admin.tomcat.port.internal>8080</docker.activiti-admin.tomcat.port.internal>

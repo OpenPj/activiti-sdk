@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>activiti-overlay-docker</artifactId>
 	<packaging>jar</packaging>
@@ -7,7 +9,7 @@
 	<parent>
 		<groupId>org.activiti.community</groupId>
 		<artifactId>activiti-sdk</artifactId>
-		<version>1.0.2</version>
+		<version>1.0.3</version>
 	</parent>
 
 	<build>
@@ -164,13 +166,17 @@
 									<tag>${project.version}</tag>
 								</tags>
 							</build>
-							<run>
+							<run> 
+								<env>
+									<CATALINA_OPTS>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:${docker.activiti-app.debug.port.internal}</CATALINA_OPTS>
+								</env>
 								<network>
 									<name>activiti-network</name>
 									<alias>activiti-app</alias>
 								</network>
 								<ports>
 									<port>${docker.activiti-app.tomcat.port.external}:${docker.activiti-app.tomcat.port.internal}</port>
+									<port>${docker.activiti-app.debug.port.external}:${docker.activiti-app.debug.port.internal}</port>
 								</ports>
 								<wait>
 									<http>
@@ -200,12 +206,16 @@
 								</tags>
 							</build>
 							<run>
+								<env>
+									<CATALINA_OPTS>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:${docker.activiti-rest.debug.port.internal}</CATALINA_OPTS>
+								</env>
 								<network>
 									<name>activiti-network</name>
 									<alias>activiti-rest</alias>
 								</network>
 								<ports>
 									<port>${docker.activiti-rest.tomcat.port.external}:${docker.activiti-rest.tomcat.port.internal}</port>
+									<port>${docker.activiti-rest.debug.port.external}:${docker.activiti-rest.debug.port.internal}</port>
 								</ports>
 								<volumes>
 									<bind>aps-contentstore-volume:/data</bind>
