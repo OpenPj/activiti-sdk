@@ -46,10 +46,17 @@ Endpoints available:
  * `http://localhost:8081/activiti-rest` (default user: `admin/test`)
  * `http://localhost:9090/activiti-admin` (default user: `admin/admin`)
  
+Default logging configuration:
+ * Activiti App -> `/usr/local/tomcat/logs/activiti-app.log`
+ * Activiti Rest -> `/usr/local/tomcat/logs/activiti-rest.log`
+
+Default debug ports:
+ * Activiti App -> `8888`
+ * Activiti Rest -> `9999`
+ 
 Stop all the Docker containers with:
  
  * `mvn docker:stop`
-
 
 # Activiti Extensions JAR Module
 
