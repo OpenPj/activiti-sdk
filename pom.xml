@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.activiti.community</groupId>
 	<artifactId>activiti-sdk</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.4</version>
 	<packaging>pom</packaging>
 	<name>Activiti SDK</name>
 	<description>SDK template for creating Activiti extensions</description>
@@ -102,6 +102,7 @@
 		<docker.activiti-admin.database.dialect>org.hibernate.dialect.PostgreSQLDialect</docker.activiti-admin.database.dialect>
 		<docker.activiti-admin.database.url>jdbc:postgresql://activiti-admin_postgres:${docker.activiti-admin.database.port.internal}/activiti-admin?characterEncoding=UTF-8</docker.activiti-admin.database.url>
 
+		<activiti.client.version>6.0.0-FINAL</activiti.client.version>
 	</properties>
 
 	<build>
@@ -164,7 +165,6 @@
 		<module>activiti-app-rest-overlay-war</module>
 		<module>activiti-admin-overlay-war</module>
 		<module>activiti-docker-overlay</module>
-		<module>activiti-swagger-client</module>
 		<module>activiti-integration-tests</module>
 	</modules>
 </project>
