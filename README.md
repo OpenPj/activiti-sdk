@@ -10,7 +10,7 @@ The project consists of the following Maven submodules:
  * Activiti App Overlay WAR (`activiti-app-overlay-war`): generate activiti-app WAR overlay with Activiti Extensions JAR embedded
  * Activiti Rest Overlay WAR (`activiti-app-rest-overlay-war`): generate activiti-rest WAR overlay with Activiti Extensions JAR embedded
  * Activiti Admin Overlay WAR (`activiti-admin-overlay-war`): generate activiti-admin WAR overlay
- * Activiti Overlay Docker (`activiti-app-overlay-docker`): put your overlayed WAR into the APS Docker container
+ * Activiti Overlay Docker (`activiti-app-overlay-docker`): put your overlayed WARs into the Docker containers
  * Activiti Integration Tests (`activiti-integration-tests`): integration tests
  * [Activiti Rest Swagger Client](https://github.com/OpenPj/activiti-swagger-client) (`activiti-swagger-client`): generate the Activiti Rest Java Swagger client (separated project)
 
