@@ -1,4 +1,4 @@
-# Activiti SDK v1.0.4
+# Activiti SDK v1.0.5
 
 The Activiti SDK based on Apache Maven, includes support for rapid and standard development, testing, packaging, versioning and release of your Activiti integration and extension projects.
 
@@ -57,10 +57,18 @@ Default debug ports:
 Stop all the Docker containers with:
  
  * `mvn docker:stop`
+ 
+Considering that the Activiti Admin should be built just once, you can skip the build and packaging process for it (WAR and Docker container) with the `skip.admin` Maven profile as the following:
+
+ * `mvn clean install docker:build docker:start -Pskip.admin`
 
 # Activiti Extensions JAR Module
 
-Folder structure is based on the same APS project classpath:
+Folder structure is based on the Activiti project classpath:
+ * `org.activiti.app.extension.conf`: put here your custom configuration classes for Activiti App
+ * `org.activiti.app.extension.bean`: put here your custom Spring beans (delegates etc.) for Activiti App
+ * `org.activiti.rest.conf`: put here your custom Spring beans (delegates etc.) for Activiti Rest
+ * `classpath:activiti-custom-context.xml`: put here your custom Spring context for Activiti Rest
  * `/activiti-extensions-jar/src/test/resources/apps`: contains your own Activiti applications extracted
  * `/activiti-extensions-jar/src/test/java`: put here your unit and integration tests
  

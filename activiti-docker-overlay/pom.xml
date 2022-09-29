@@ -1,6 +1,4 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>activiti-overlay-docker</artifactId>
 	<packaging>jar</packaging>
@@ -9,7 +7,7 @@
 	<parent>
 		<groupId>org.activiti.community</groupId>
 		<artifactId>activiti-sdk</artifactId>
-		<version>1.0.4</version>
+		<version>1.0.5</version>
 	</parent>
 
 	<build>
@@ -166,7 +164,7 @@
 									<tag>${project.version}</tag>
 								</tags>
 							</build>
-							<run> 
+							<run>
 								<env>
 									<CATALINA_OPTS>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=0.0.0.0:${docker.activiti-app.debug.port.internal}</CATALINA_OPTS>
 								</env>
@@ -229,6 +227,7 @@
 							<alias>activiti-admin</alias>
 							<name>activiti-sdk/activiti-admin-project:development</name>
 							<build>
+								<skip>${skip.admin}</skip>
 								<buildOptions>
 									<platforms>linux/amd64, linux/arm64</platforms>
 								</buildOptions>
@@ -374,6 +373,70 @@
 											<name>activiti-contentstore-volume</name>
 										</volume>
 									</volumes>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>skip.admin</id>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-jar-extensions</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.activiti.community</groupId>
+											<artifactId>activiti-extensions-jar</artifactId>
+											<version>${project.version}</version>
+											<type>jar</type>
+											<overWrite>true</overWrite>
+											<outputDirectory>${project.parent.basedir}/target/extensions</outputDirectory>
+										</artifactItem>
+									</artifactItems>
+									<overWriteReleases>false</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
+								</configuration>
+							</execution>
+							<execution>
+								<id>copy-war-extensions</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>org.activiti.community</groupId>
+											<artifactId>activiti-app-overlay-war</artifactId>
+											<version>${project.version}</version>
+											<type>war</type>
+											<overWrite>true</overWrite>
+											<outputDirectory>${project.parent.basedir}/target/wars</outputDirectory>
+											<destFileName>activiti-app.war</destFileName>
+										</artifactItem>
+										<artifactItem>
+											<groupId>org.activiti.community</groupId>
+											<artifactId>activiti-app-rest-overlay-war</artifactId>
+											<version>${project.version}</version>
+											<type>war</type>
+											<overWrite>true</overWrite>
+											<outputDirectory>${project.parent.basedir}/target/wars</outputDirectory>
+											<destFileName>activiti-rest.war</destFileName>
+										</artifactItem>
+									</artifactItems>
+									<overWriteReleases>false</overWriteReleases>
+									<overWriteSnapshots>true</overWriteSnapshots>
 								</configuration>
 							</execution>
 						</executions>

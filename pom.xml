@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.activiti.community</groupId>
 	<artifactId>activiti-sdk</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<packaging>pom</packaging>
 	<name>Activiti SDK</name>
 	<description>SDK template for creating Activiti extensions</description>
@@ -59,13 +59,13 @@
 
 		<docker.activiti-app.tomcat.port.external>8080</docker.activiti-app.tomcat.port.external>
 		<docker.activiti-app.tomcat.port.internal>8080</docker.activiti-app.tomcat.port.internal>
-		
+
 		<docker.activiti-app.debug.port.external>8888</docker.activiti-app.debug.port.external>
 		<docker.activiti-app.debug.port.internal>8888</docker.activiti-app.debug.port.internal>
 
 		<docker.activiti-rest.tomcat.port.external>8081</docker.activiti-rest.tomcat.port.external>
 		<docker.activiti-rest.tomcat.port.internal>8080</docker.activiti-rest.tomcat.port.internal>
-		
+
 		<docker.activiti-rest.debug.port.external>9999</docker.activiti-rest.debug.port.external>
 		<docker.activiti-rest.debug.port.internal>8888</docker.activiti-rest.debug.port.internal>
 
@@ -103,6 +103,7 @@
 		<docker.activiti-admin.database.url>jdbc:postgresql://activiti-admin_postgres:${docker.activiti-admin.database.port.internal}/activiti-admin?characterEncoding=UTF-8</docker.activiti-admin.database.url>
 
 		<activiti.client.version>6.0.0-FINAL</activiti.client.version>
+		<skip.admin>false</skip.admin>
 	</properties>
 
 	<build>
@@ -167,4 +168,22 @@
 		<module>activiti-docker-overlay</module>
 		<module>activiti-integration-tests</module>
 	</modules>
+	<profiles>
+		<profile>
+			<id>skip.admin</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<skip.admin>true</skip.admin>
+			</properties>
+			<modules>
+				<module>activiti-extensions-jar</module>
+				<module>activiti-app-overlay-war</module>
+				<module>activiti-app-rest-overlay-war</module>
+				<module>activiti-docker-overlay</module>
+				<module>activiti-integration-tests</module>
+			</modules>
+		</profile>
+	</profiles>
 </project>
