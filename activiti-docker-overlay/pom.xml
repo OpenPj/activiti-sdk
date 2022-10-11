@@ -183,7 +183,7 @@
 									<time>${docker.activiti.time.test}</time>
 								</wait>
 								<volumes>
-									<bind>aps-contentstore-volume:/data</bind>
+									<bind>activiti-contentstore-volume:/data</bind>
 								</volumes>
 								<dependsOn>
 									<container>activiti_postgres</container>
